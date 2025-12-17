@@ -1,22 +1,12 @@
-let mySprite = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . 3 3 3 3 3 3 3 3 . . . . . . 
-    . 3 3 3 3 3 3 3 3 3 3 . . . . . 
-    . . 3 3 3 3 . . . . 3 3 . . . . 
-    . . 3 3 3 . . . . . . . 3 . . . 
-    . . 3 3 . . . . . . . . 3 3 . . 
-    . . 3 3 3 . . . . . . . 3 3 3 . 
-    . . 3 3 3 . . . . . . . 3 3 3 . 
-    . . 3 . 3 3 . . . . . . 3 3 . . 
-    . . 3 . 3 . 3 3 3 . . 3 3 3 . . 
-    . . 3 3 3 . . . 3 3 3 3 3 . . . 
-    . . . 3 . 3 . . . 3 3 3 3 . . . 
-    . . . . 3 3 3 3 3 3 3 3 . . . . 
-    . . . . . . 3 3 3 3 . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
-mySprite.setStayInScreen(true)
+controller.A.onEvent(ControllerButtonEvent.Repeated, function () {
+    hotBallon.top += -1
+})
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    hotBallon.top += -1
+})
+let hotBallon: Sprite = null
+hotBallon = sprites.create(assets.image`meinBild`, SpriteKind.Player)
+hotBallon.setStayInScreen(true)
 let mySprite2 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -35,8 +25,29 @@ let mySprite2 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Player)
+let gegner = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . 2 2 2 . . . . . . . 
+    . . . . . . 2 2 2 . . . . . . . 
+    . . . . . . 2 2 2 . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.Enemy)
+gegner.setVelocity(10, 0)
+gegner.setPosition(4, 59)
+gegner.x = 10
 forever(function () {
-    mySprite.y += 1
+    hotBallon.y += 1
     pause(100)
-    mySprite.y += 1
+    hotBallon.y += 1
 })
